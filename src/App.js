@@ -8,6 +8,7 @@ import Counter from './components/counter/counter';
 
 
 
+
 function App() {
 
   const handLeOnadd =()=>{
@@ -21,7 +22,9 @@ function App() {
      
    <Navbar/>  
      <ItemListContainer greeting={'Bienvenidos'}/>
+       
   <Counter onAdd={handLeOnadd}/>
+  
      
        
 

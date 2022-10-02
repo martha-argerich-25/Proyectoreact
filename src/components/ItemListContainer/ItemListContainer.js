@@ -9,7 +9,7 @@ import ItemList from "../ItemList/ItemList"
 
 const ItemListContainer = ({hola})=>{
 
-   const [products,setProducts]= useState([{}])
+   const [products,setProducts]= useState([])
     const [loading,setLoading]=useState(true)
 
 useEffect(()=>{
@@ -30,22 +30,19 @@ if(loading){
 console.log(products)
 
 //const productsMapped = products.map(prod=> 
-//<div>
-     //<h2>{prod.name}</h2>
-    // <h2>{prod.price}</h2>
-    // <h2>{prod.stock}</h2>
-    // <img src={'/img/1.jpg'} alt={'orquidea'}/>
+//<li>
+   //  <h2>{prod.name}</h2>
+   //  <h2>{prod.price}</h2>
+  //   <h2>{prod.stock}</h2>
+  //   <img src={'/img/1.jpg'} alt={'orquidea'}/>
      
-//</div>)
+//</li>)
 //console.log(productsMapped)
 
     return ( 
       <div>
           <h1>Lista de productos</h1>
           <ItemList products={products}/>
-         
-    
-        
 
 
          </div>
