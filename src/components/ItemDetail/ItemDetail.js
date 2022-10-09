@@ -2,7 +2,7 @@
 import Counter from "../counter/counter"
 
 
-// CARD//
+// CARD// componente de visualizacion
 const ItemDetail = ({name,price,stock,description,img,category})=>{
    
     const handLeOnadd =()=>{
@@ -12,7 +12,7 @@ const ItemDetail = ({name,price,stock,description,img,category})=>{
   
 return(
   
-    <div className='box'>
+    <div className='body'>
            
    
     <h2 className='title'>{name}</h2>

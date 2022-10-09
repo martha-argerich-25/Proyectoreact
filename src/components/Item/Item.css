@@ -2,7 +2,10 @@
 
 
 .box{
-    display: block;
+    display: inline-block;
+   
+
+    border:solid
    
 }
 
@@ -10,5 +13,5 @@
 
 
 .title{
-    color: blueviolet;
+    color: rgb(202, 43, 226);
 }

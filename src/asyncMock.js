@@ -9,7 +9,7 @@ const products = [
     price:2300 ,
     stock:3  ,
     img:'/img/1.jpg',
-    description:'una de las orquideas mas hermosas',
+    description:'una de las orquideas mas hermosas y faciles de cuidar',
     category:'faciles'
     },
 
@@ -18,7 +18,7 @@ const products = [
     price:2450,
     stock:4, 
     img:'/img/2.jpg',
-    description:'una de las orquideas mas hermosas',
+    description:'una de las orquideas mas hermosas y dificiles de cuidar',
     category:'dificiles'
     },
 
@@ -27,7 +27,7 @@ const products = [
     price:4450,
     stock:5, 
     img:'/img/3.jpg',
-    description:'una de las orquideas mas hermosas',
+    description:'una de las orquideas mas hermosas y dificiles de cuidar',
     category:'dificiles'
     },
     {id:4,
@@ -92,7 +92,7 @@ const products = [
 
 
 
-
+//------------------------funcion para obtener productos-----------------------------------
 
 export const getProducts =()=>{
 
@@ -120,9 +120,9 @@ export const getProductById=(id)=>{
 //-------------------------------------funcion para filtar por categoria---------------------
 export const getProductsByCategory=(categoryId)=>{
 
-    return new Promise ((resolve)=>{
+    return new Promise (resolve=>{
         setTimeout(()=>{
             resolve(products.filter(prod=> prod.category === categoryId))
-        },2000)}
+        },1000)}
 )
 }

@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from '../CartWidget/CartWidget';
+import {Link} from 'react-router-dom'
 
 
 
@@ -17,7 +18,8 @@ function BasicExample() {
       <img src={logo} width="100" alt="flor"/>
       <Container>
     
- <Navbar.Brand href="#home">Orquideas</Navbar.Brand>
+ <Navbar.Brand >Orquideas</Navbar.Brand>
+ <Link to ='/'>HOME</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

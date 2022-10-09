@@ -15,6 +15,9 @@ const [loading,setLoading]= useState(true)
 const {productId}= useParams()
 console.log(productId)
 
+
+
+//simulacion de API
 useEffect(()=>{
 
 getProductById(productId).then(response=>{

@@ -15,7 +15,7 @@ const ItemListContainer = ({hola})=>{
 
    const [products,setProducts]= useState([])
     const [loading,setLoading]=useState(true)
-    const {categoryId}= useParams
+    const {categoryId}= useParams()
     console.log (categoryId)
 
 useEffect(()=>{
@@ -52,8 +52,8 @@ console.log(products)
 //console.log(productsMapped)
 
     return ( 
-      <div>
-          <h1>Lista de productos</h1>
+      <div className="body">
+          <h1>Lista de Productos</h1>
           <Link to = {'/category/faciles'} className="Titlefilter"> Faciles cuidados</Link>
 
           <Link to = {'/category/dificiles'}>Dificiles cuidados</Link>
