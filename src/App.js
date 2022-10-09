@@ -2,40 +2,25 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import Counter from './components/counter/counter';
-
-
-
-
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 
 
 function App() {
-
-  const handLeOnadd =()=>{
-    console.log("se agrego al carrito")
-  }
-
-
-
   return (
     <div className="App">
-     
-   <Navbar/>  
-     <ItemListContainer greeting={'Bienvenidos'}/>
  
-       
-  <Counter onAdd={handLeOnadd}/>
+<BrowserRouter>
+     <Navbar/>  
+     <Routes>
+       <Route path='/' element={<ItemListContainer greeting={'Bienvenidos'}/>}/>   
+       <Route path='/category/:categoryId' element ={<ItemListContainer/>}/>  
+        <Route path='/detail/:productId' element={<ItemDetailContainer/>}/>
+        <Route path='*'element = {<h1>404 not found</h1>}/>
+     </Routes>
+     </BrowserRouter>
   
-     
-       
-
-       
-       
-
-       
-         
-       
         
         
   

@@ -9,17 +9,19 @@ import CartWidget from '../CartWidget/CartWidget';
 
 
 
+
 function BasicExample() {
   return (
     
     <Navbar bg="light" expand="lg">
       <img src={logo} width="100" alt="flor"/>
       <Container>
-        <Navbar.Brand href="#home">Orquideas</Navbar.Brand>
+    
+ <Navbar.Brand href="#home">Orquideas</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Productos</Nav.Link>
+          <Nav.Link href="#home">Productos</Nav.Link>
             <Nav.Link href="#link">Ventas</Nav.Link>
             <NavDropdown title="mas opciones" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">compras</NavDropdown.Item>

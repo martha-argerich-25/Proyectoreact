@@ -1,22 +1,30 @@
 
-import Counter from './components/counter/counter';
+import Counter from "../counter/counter"
 
 
 // CARD//
-const ItemDetail = ({product})=>{
+const ItemDetail = ({name,price,stock,description,img,category})=>{
+   
+    const handLeOnadd =()=>{
+        console.log("se agrego al carrito")
+      }
 
+  
 return(
   
     <div className='box'>
            
-    
-    <h2 className='title'>{product.name}</h2>
+   
+    <h2 className='title'>{name}</h2>
 
-     <h2>Precio {product.price}$</h2>
-     <h2>Stock {product.stock}</h2>
-     <p>{product.description}description</p>
-    <img src={product.img} alt={'name'} style={{width:400}}/>
-    <Counter/>    
+     <h2>Precio {price}$</h2>
+     <h2>Stock {stock}</h2>
+     <p>{description}</p>
+    <p>categoria {category}</p>
+    <img src={img} alt={'name'} style={{width:400}}/>
+
+
+    <Counter onAdd={handLeOnadd}/>
   
 
 </div>)

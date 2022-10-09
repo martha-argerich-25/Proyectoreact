@@ -3,24 +3,36 @@
 
 
 import { useState,useEffect } from "react"
-import { getProducts } from "../../asyncMock"
+import { getProducts,getProductsByCategory } from "../../asyncMock"
 import ItemList from "../ItemList/ItemList"
+import { useParams } from "react-router-dom"
+import {Link} from 'react-router-dom'
+import './ItemListContainer.css'
+
 
 
 const ItemListContainer = ({hola})=>{
 
    const [products,setProducts]= useState([])
     const [loading,setLoading]=useState(true)
+    const {categoryId}= useParams
+    console.log (categoryId)
 
 useEffect(()=>{
-getProducts().then(response=>{
+    // si tengo categoryid  busca la categoria y si no es get products
+
+    const asynFunction = categoryId ? getProductsByCategory : getProducts
+
+
+
+    asynFunction(categoryId).then(response=>{
     console.log(response)
 setProducts(response)
 }).finally(()=>{
 setLoading(false)
 
 })
-},[])
+},[categoryId])
 
 //----------------------------------
 if(loading){
@@ -42,7 +54,12 @@ console.log(products)
     return ( 
       <div>
           <h1>Lista de productos</h1>
+          <Link to = {'/category/faciles'} className="Titlefilter"> Faciles cuidados</Link>
+
+          <Link to = {'/category/dificiles'}>Dificiles cuidados</Link>
+
           <ItemList products={products}/>
+        
          
 
 
