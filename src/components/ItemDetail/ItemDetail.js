@@ -1,17 +1,27 @@
 
 import Counter from "../counter/counter";
-import{useState} from 'react';
+import{useContext, } from 'react';
 import { Link } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
+
+
 
 
 // CARD// componente de visualizacion
-const ItemDetail = ({name,price,stock,description,img,category})=>{
+const ItemDetail = ({id,name,price,stock,description,img,category})=>{
    
-const [goCart,setGoCart] = useState (false);
+const {addItem} = useContext (CartContext);
 
 
-    const handLeOnadd =()=>{
-       setGoCart(true);
+
+    const handLeOnadd =(count)=>{
+
+      const productToAdd ={
+        id,name,price,count
+      }
+
+
+     addItem (productToAdd)
 
 
       }
@@ -27,9 +37,10 @@ return(
      <p>{description}</p>
     <p>categoria {category}</p>
     <img src={img} alt={'name'} style={{width:400}}/>
+    <Counter onAdd={handLeOnadd}/>
   {
       //si es verdadero que nos lleve al carrito y si es falso que renderice
-      goCart ?<Link to='/cart'>finalizar compra</Link>:<Counter onAdd={handLeOnadd}/>
+      //goCart ?<Link to='/cart'>finalizar compra</Link>:<Counter onAdd={handLeOnadd}/>
 
   }
 
