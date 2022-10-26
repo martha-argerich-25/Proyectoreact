@@ -3,7 +3,8 @@ import { useState,useEffect } from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import './ItemListContainer.css'
-import { getFirestore,getDocs,collection } from "firebase/firestore"
+import {getDocs,collection } from "firebase/firestore"
+import { db } from "../../service/firebase"
 
 
 // traer el servicio de firestore
@@ -12,23 +13,20 @@ import { getFirestore,getDocs,collection } from "firebase/firestore"
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const { category } = useParams()
     
 
     useEffect(() => {
-        setLoading(true)
+        //setLoading(true)
 
-        const querydb = getFirestore()
-        const queryCollection = collection(querydb, 'products' );
+        //const querydb = getFirestore()
+        const queryCollection = collection(db, 'products' );
         getDocs (queryCollection)
-        .then(res =>setProducts  (res.docs.map(product=>({id:product.id,...product.data}))))
-       
-       
-       
-
+        .then(res =>setProducts  (res.docs.map(product=>({id:product.id,...product.data()}))))
       
-    }, [category])
+      
+    }, [])
 
     if (loading) {
         return (
