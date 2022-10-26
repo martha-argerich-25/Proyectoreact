@@ -1,49 +1,47 @@
 import { useState,useEffect } from "react"
-import { getProductById } from "../../asyncMock"
+
 import ItemDetail from "../ItemDetail/ItemDetail"
 import {useParams} from "react-router-dom"
+import { getFirestore,getDoc ,doc} from "firebase/firestore"
 
 
 
-const ItemDetailContainer =()=>{
+const ItemDetailContainer = () => {
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const { productId } = useParams()
 
 
-const [product,setProduct]= useState([])
-const [loading,setLoading]= useState(true)
+  useEffect(() => {
+      const querydb = getFirestore()
+      const queryDoc = doc(querydb, 'products', productId);
+      getDoc(queryDoc)
+          .then(res => setProducts({ id: res.id, ...res.data() }))
+          .finally(() => {
+              setLoading(false)
+          })
 
 
-const {productId}= useParams()
-console.log(productId)
+
+  }, [productId])
 
 
 
-//simulacion de API
-useEffect(()=>{
 
-getProductById(productId).then(response=>{
 
-    console.log (response)
-    setProduct(response)
 
-}).finally(()=>{
-    setLoading(false)
-})
-},[productId])
+  if (loading) {
     
-if(loading){
 
-    return<h1>loading...</h1>
+    <h1>loading</h1>
+
+  }
+  return (
+      <div>
+          <ItemDetail  {...products} />
+
+      </div>
+  )
 }
 
-console.log(product)
-
-return (
-    <div>
-    <h1>Producto</h1>
-    <ItemDetail product={product.id}{...product}/>
-    </div>
-)
-
-
-}
 export default ItemDetailContainer

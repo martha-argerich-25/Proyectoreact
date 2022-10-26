@@ -11,13 +11,52 @@ import {Link} from 'react-router-dom'
 
 
 
+
 function BasicExample() {
+
+  //const [categories,setCategories] = useState([])
+
+//useEffect(()=>{
+
+
+  //const collectionRef = collection (db,'categories')
+
+
+//getDocs (collectionRef).then (response =>{
+
+
+//const categoriesAdapted = response.docs.map( doc =>{
+ //const data = doc.data ()
+ //const id = doc.id
+ //return {id,...data}
+
+//})
+//setCategories (categoriesAdapted)
+
+//})
+
+//},[])
+
+
+// PARA PROBAR LUEGO
+//{
+ // categories.map (cat => (
+  //  <Link key={cat.id}to = {`/category/${cat.slug}`}>{cat.label}</Link>
+  //  ))
+//}
+
+
+
   return (
+
     
     <Navbar bg="light" expand="lg">
       <img src={logo} width="100" alt="flor"/>
+
+      <Link to = {'/category/faciles'} className="Titlefilter"> Faciles cuidados</Link>
+
+      <Link to = {'/category/dificiles'}>Dificiles cuidados</Link>
       <Container>
-    
  <Navbar.Brand >Orquideas</Navbar.Brand>
  <Link to ='/'>HOME</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -1,5 +1,5 @@
 import {useState, createContext,useEffect, useContext} from "react"
-import react from 'react'
+
 
 
 
@@ -16,11 +16,21 @@ export const CartContext = createContext(
 
     const [Cart,setGoCart] = useState([])
     const [totalQuantity,setTotalQuantity]= useState(0)
+    const [total,setTotal]=useState (0)
 
     useEffect (()=>{
 
-        const finallyTotal = getQuantity()
+     const finallyTotal = getQuantity()
         setTotalQuantity(finallyTotal)
+
+    },[Cart])
+
+
+    useEffect (()=>{
+
+const total = getTotal()
+setTotal (total)
+
 
     },[Cart])
 
@@ -31,15 +41,14 @@ export const CartContext = createContext(
       setGoCart([...Cart,productToAdd])
     }
     
-    
     }
     //-------------precio total----------------------
     const totalPrice = ()=>{
-        return Cart.reduce ((prev,act)=> prev +act.quantity * act.price,0);
+        return Cart.reduce ((prev,act )=> prev +act.quantity * act.price,0);
 
     }
-    //------------------------ por cada elemento ejecuta la funcion y el resultado la acumula en prev
-const totalProducts = ()=> Cart.reduce((acumulador,productoActual)=>acumulador+productoActual.quantity,0)
+    //------------------------funcion para saber la cantidad de productos hay en el carrito----------
+const totalProducts = ()=> Cart.reduce((acumulador,productoActual)=>acumulador + productoActual.quantity,0)
 
 
 
@@ -50,6 +59,7 @@ const totalProducts = ()=> Cart.reduce((acumulador,productoActual)=>acumulador+p
     }
     
    
+   
     
 ///------------- para eliminar un producto del carrito//
     const removeItem =(id)=>{
@@ -57,7 +67,7 @@ const totalProducts = ()=> Cart.reduce((acumulador,productoActual)=>acumulador+p
         const cartRemoveProduct = Cart.filter(prod => prod.id !== id)
         setGoCart(cartRemoveProduct)
     } 
-//--------------------------------------------
+//-----------------obtengo la catidad total---------------------------
 
     const getQuantity =()=>{
         let accu = 0
@@ -69,11 +79,20 @@ const totalProducts = ()=> Cart.reduce((acumulador,productoActual)=>acumulador+p
         return accu
     }
 
-//---------------------------------------------------
+//----------------------------------obtengo el total-----------------
+
+const getTotal = ()=>{
+    let accu = 0
+    
+    Cart.forEach (prod =>{
+        accu+= prod.quantity * prod.price
+
+    })
+}
 
 
 return(
-    <CartContext.Provider value={{Cart,addItem,removeItem,totalQuantity,totalPrice,totalProducts}}>
+    <CartContext.Provider value={{Cart,addItem,isInCart,removeItem,totalQuantity,totalPrice,totalProducts,getQuantity,getTotal}}>
             {children}
      </CartContext.Provider>
 

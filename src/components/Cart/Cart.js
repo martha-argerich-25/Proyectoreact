@@ -14,20 +14,27 @@ const {Cart,totalPrice} = useCart();
 
 
 if ( Cart.length === 0){
-    <>
+
+    return(
+    <div>
     <p>no hay producto en el carrito</p>
     <Link to ='/'>Hacer compra</Link>
-    </>
-}
+    </div>
+
+    )
+    
+    }
 
 return (
 
 <div>
+           
     {
+       
         Cart.map(products =><ItemCart Key={products.id} product={products}/>)
    
     }
-         <p>total:{totalPrice()}</p>
+         <p>total:{totalPrice}</p>
 
 </div>
 

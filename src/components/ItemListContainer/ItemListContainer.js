@@ -1,73 +1,55 @@
 
-//es el encargado de traer los productosy listarlos //
-
-
 import { useState,useEffect } from "react"
-import { getProducts,getProductsByCategory } from "../../asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import {Link} from 'react-router-dom'
 import './ItemListContainer.css'
+import { getFirestore,getDocs,collection } from "firebase/firestore"
 
 
+// traer el servicio de firestore
+// crear un puntero al dato que queremos traer
+// traer el dato con una promesa
 
-const ItemListContainer = ({hola})=>{
+const ItemListContainer = ({ greeting }) => {
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const { category } = useParams()
+    
 
-   const [products,setProducts]= useState([])
-    const [loading,setLoading]=useState(true)
-    const {categoryId}= useParams()
-    console.log (categoryId)
+    useEffect(() => {
+        setLoading(true)
 
-useEffect(()=>{
-    // si tengo categoryid  busca la categoria y si no es get products
+        const querydb = getFirestore()
+        const queryCollection = collection(querydb, 'products' );
+        getDocs (queryCollection)
+        .then(res =>setProducts  (res.docs.map(product=>({id:product.id,...product.data}))))
+       
+       
+       
 
-    const asynFunction = categoryId ? getProductsByCategory : getProducts
+      
+    }, [category])
+
+    if (loading) {
+        return (
+            <div>
+
+<h1>esperando</h1>
+
+                
 
 
+            </div>)
+    }
 
-    asynFunction(categoryId).then(response=>{
-    console.log(response)
-setProducts(response)
-}).finally(()=>{
-setLoading(false)
-
-})
-},[categoryId])
-
-//----------------------------------
-if(loading){
-   return <h1>loading....</h1>
-}
-
-console.log(products)
-
-//const productsMapped = products.map(prod=> 
-//<li>
-   //  <h2>{prod.name}</h2>
-   //  <h2>{prod.price}</h2>
-  //   <h2>{prod.stock}</h2>
-  //   <img src={'/img/1.jpg'} alt={'orquidea'}/>
-     
-//</li>)
-//console.log(productsMapped)
-
-    return ( 
-      <div className="body">
-          <h1>Lista de Productos</h1>
-          <Link to = {'/category/faciles'} className="Titlefilter"> Faciles cuidados</Link>
-
-          <Link to = {'/category/dificiles'}>Dificiles cuidados</Link>
-
-          <ItemList products={products}/>
-        
+    return (
+        <div >
          
-
-
-         </div>
-
+            <div>
+                <ItemList products={products} />
+            </div>
+        </div>
     )
-
-   
 }
 
 export default ItemListContainer

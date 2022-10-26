@@ -13,8 +13,10 @@ import{useCart}from '../../Context/CartContext'
 const ItemDetail = ({id,name,price,stock,description,img,category})=>{
    
 
+  
+
   const [goToCart,setGoCart]= useState(false)
-const {addItem} = useCart();
+  const {addItem} = useCart();
 
 
 
@@ -43,7 +45,8 @@ return(
      <p>{description}</p>
     <p>categoria {category}</p>
     <img src={img} alt={'name'} style={{width:400}}/>
-    <Counter onAdd={handLeOnadd}/>
+    
+
   {
       //si es verdadero que nos lleve al carrito y si es falso que renderice
       goToCart ?<Link to='/cart'>finalizar compra</Link>:<Counter onAdd={handLeOnadd}/>

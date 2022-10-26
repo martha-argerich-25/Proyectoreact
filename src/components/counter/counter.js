@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const  Counter = ({stock=4, initial = 0 ,onAdd})=>{
+const  Counter = ({stock=4, initial = 1 ,onAdd})=>{
 
 
     // se desestructura ,lo que esta en la posicion 0 la guarda con nombre count y posicion 1 (la funcion con el nombre setcount)
