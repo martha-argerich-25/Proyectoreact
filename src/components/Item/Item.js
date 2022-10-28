@@ -16,7 +16,9 @@ return (
              <img src={img} alt={'name'} style={{width:400}}/>
           
              
-       </div>)
+       </div>
+       
+       )
   
   
 

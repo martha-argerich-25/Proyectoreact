@@ -46,12 +46,11 @@ return(
     <p>categoria {category}</p>
     <img src={img} alt={'name'} style={{width:400}}/>
 
-    {stock !== 0 ? <Counter onAdd={handLeOnadd} stock ={stock} initial={0}/> : <p>no hay stock disponible</p>}
     
     
 
   {
-      //si es verdadero que nos lleve al carrito y si es falso que renderice
+//{stock !== 0 ? <Counter onAdd={handLeOnadd} stock ={stock} initial={3}/> : <p>no hay stock disponible</p>}
       goToCart ?<Link to='/cart'>finalizar compra</Link>:<Counter onAdd={handLeOnadd}/>
 
   }

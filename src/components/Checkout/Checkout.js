@@ -3,6 +3,7 @@ import { useCart} from "../../Context/CartContext"
 import { collection, getDocs, query, where, documentId, writeBatch, addDoc } from 'firebase/firestore'
 import { db } from '../../service/firebase'
 import React from 'react'
+import './Checkout.css'
 
 
 
@@ -12,8 +13,12 @@ import React from 'react'
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
+    const { Cart, total, clearCart } = useCart();
 
-    const { Cart, total, clearCart } = useCart;
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
 
 
     
@@ -24,10 +29,10 @@ const Checkout = () => {
         try {
             const objOrder = {
                 persona: {
-                    name: 'rodrigo',
-                    phone: '234234',
-                    mail: 'rodriperetti@gotmail.com',
-                    address:'avenida siempre viva 324'
+                    name: {name},
+                    phone: {phone},
+                    mail: {email},
+                    address:{address}
                 },
                 items: Cart,
                 total: total
@@ -86,11 +91,21 @@ const Checkout = () => {
         return <h1>Se esta procesando su pedido...</h1>
     }
 
+
+
+
+
+
     return (
-        <div>
+        <div className="formulario">
             <h1>Formulario</h1>
-            
-            <button onClick={order}>Generar Pedido</button>
+            <h2>complete el siguiente formulario para realizar su orden</h2>
+        
+            <input  value={name} onChange={(e) => setName(e.target.value)} type="text"     placeholder="Nombre" />
+                <input value={address}onChange={(e) => setAddress(e.target.value)}type="text"    placeholder="Dirección" />
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"     placeholder="Email" />
+                <input value={phone}onChange={(e) => setPhone(e.target.value)} type="number"    placeholder="Teléfono" />
+           <button onClick={order}>generar pedido</button>
         </div>
     )
 }
