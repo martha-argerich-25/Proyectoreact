@@ -7,6 +7,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from '../CartWidget/CartWidget';
 import {Link} from 'react-router-dom'
+import { useState,useEffect } from "react"
+import { getDocs, collection, } from 'firebase/firestore'
+import { db } from "../../service/firebase"
 
 
 
@@ -14,36 +17,32 @@ import {Link} from 'react-router-dom'
 
 function BasicExample() {
 
-  //const [categories,setCategories] = useState([])
+  const [categories,setCategories] = useState([])
 
-//useEffect(()=>{
-
-
-  //const collectionRef = collection (db,'categories')
+useEffect(()=>{
 
 
-//getDocs (collectionRef).then (response =>{
+  const collectionRef = collection (db,'categories')
 
 
-//const categoriesAdapted = response.docs.map( doc =>{
- //const data = doc.data ()
- //const id = doc.id
- //return {id,...data}
-
-//})
-//setCategories (categoriesAdapted)
-
-//})
-
-//},[])
+getDocs (collectionRef).then (response =>{
 
 
-// PARA PROBAR LUEGO
-//{
- // categories.map (cat => (
-  //  <Link key={cat.id}to = {`/category/${cat.slug}`}>{cat.label}</Link>
-  //  ))
-//}
+const categoriesAdapted = response.docs.map( doc =>{
+ const data = doc.data ()
+ const id = doc.id
+ return {id,...data}
+
+})
+
+setCategories (categoriesAdapted)
+
+})
+
+},[])
+
+
+
 
 
 
@@ -54,9 +53,9 @@ function BasicExample() {
       <img src={logo} width="100" alt="flor"/>
 
       <Link to = {'/category/faciles'} className="Titlefilter"> Faciles cuidados</Link>
-
       <Link to = {'/category/dificiles'}>Dificiles cuidados</Link>
       <Container>
+        
  <Navbar.Brand >Orquideas</Navbar.Brand>
  <Link to ='/'>HOME</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

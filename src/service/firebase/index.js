@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "backend-proyecto-react.appspot.com",
   messagingSenderId: "530082254673",
   appId: "1:530082254673:web:b30ef6ccbef9b27b548d70"
-};
+  };
 
 // Initialize Firebase
 

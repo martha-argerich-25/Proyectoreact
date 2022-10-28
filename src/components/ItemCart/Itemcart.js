@@ -4,30 +4,20 @@ import {useCart} from '../../Context/CartContext'
 
 
 
-const ItemCart = ({product})=> {
+const ItemCart = ({product}) => {
+  const {removeProduct} = useCart ();
 
-  const {removeItem,totalPrice}  =  useCart();
+return (    
+  <div>
+      <h1>{product.name}</h1>
+      <p>Precio  ${product.price}</p>
+      <p>cantidad de producto elegido = {product.quantity}</p>
+     
+      <p>Subtotal: ${product.quantity * product.price}</p>
+      <button onClick={()=>removeProduct(product.id)}> Eliminar</button>
 
-
-return (
-
-<div>
-<p>nombre:{product.name}</p>
- <p>Precio {totalPrice}$</p>
- <img src={product.img} alt={'name'} style={{width:400}}/>
-
-<p>cantidad :{product.quantity}</p>
-    <p>subtotal:${product.quantity * product.price}</p>
-
-   
-  <button onClick={()=>removeItem(product.id)}>eliminar</button>
-
-
-
-</div>
-
-
+  </div>
 )
 }
-export default ItemCart
 
+export default ItemCart

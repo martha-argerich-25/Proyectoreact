@@ -16,20 +16,20 @@ const ItemDetail = ({id,name,price,stock,description,img,category})=>{
   
 
   const [goToCart,setGoCart]= useState(false)
-  const {addItem} = useCart();
+  const {addProduct} = useCart();
 
 
 
-    const handLeOnadd =(count)=>{
+    const handLeOnadd =(quantity)=>{
 
       setGoCart(true)
 
       const productToAdd ={
-        id,name,price,count
+        id,name,price,category
       }
 
 
-     addItem (productToAdd)
+     addProduct (productToAdd,quantity)
 
 
       }
@@ -45,6 +45,9 @@ return(
      <p>{description}</p>
     <p>categoria {category}</p>
     <img src={img} alt={'name'} style={{width:400}}/>
+
+    {stock !== 0 ? <Counter onAdd={handLeOnadd} stock ={stock} initial={0}/> : <p>no hay stock disponible</p>}
+    
     
 
   {

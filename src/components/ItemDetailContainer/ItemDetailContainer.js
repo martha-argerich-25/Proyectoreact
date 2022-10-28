@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react"
-
 import ItemDetail from "../ItemDetail/ItemDetail"
 import {useParams} from "react-router-dom"
 import { getFirestore,getDoc ,doc} from "firebase/firestore"
+
 
 
 
@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
       const querydb = getFirestore()
-      const queryDoc = doc(querydb, 'products', productId);
+      const queryDoc = doc(querydb, 'prueba', productId);
       getDoc(queryDoc)
           .then(res => setProducts({ id: res.id, ...res.data() }))
           .finally(() => {
@@ -24,10 +24,6 @@ const ItemDetailContainer = () => {
 
 
   }, [productId])
-
-
-
-
 
 
   if (loading) {

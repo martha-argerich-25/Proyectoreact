@@ -13,7 +13,7 @@ import { db } from "../../service/firebase"
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading] = useState(false)
     const { category } = useParams()
     
 
@@ -21,21 +21,18 @@ const ItemListContainer = ({ greeting }) => {
         //setLoading(true)
 
         //const querydb = getFirestore()
-        const queryCollection = collection(db, 'products' );
+        const queryCollection = collection(db,'prueba' );
         getDocs (queryCollection)
         .then(res =>setProducts  (res.docs.map(product=>({id:product.id,...product.data()}))))
-      
-      
+   
     }, [])
-
+   
+   
     if (loading) {
         return (
             <div>
 
 <h1>esperando</h1>
-
-                
-
 
             </div>)
     }
