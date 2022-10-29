@@ -10,7 +10,7 @@ import swal from 'sweetalert'
 
 
 
-
+// FUNCION DE COMPRA Y CONFIRMACION ENVIANDO DATOS A FIREBASE//
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
@@ -45,7 +45,7 @@ const Checkout = () => {
 
             const ids = Cart.map(prod => prod.id)
     
-            const productsRef = collection(db, 'products')
+            const productsRef = collection(db, 'prueba')
     
             const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
 
@@ -64,29 +64,21 @@ const Checkout = () => {
                     outOfStock.push({ id: doc.id, ...dataDoc})
                 }
             })
-
             if(outOfStock.length === 0) {
                 await batch.commit()
-
                 const orderRef = collection(db, 'orders')
-
                 const orderAdded = await addDoc(orderRef, objOrder)
-
                 clearCart()
-
-               
-                console.log('success', `El id de su orden es: ${orderAdded.id}`)
+                console.log('success', `El id es : ${orderAdded.id}`)
                 swal ('su compra se  realizo correctamente')
             } else {
                 console.log('error','no hay stock disponibles')
             }
-
         } catch (error) {
             console.log(error)
         } finally {
             setLoading(false)
         }
-        
     }
 
     if(loading) {
@@ -96,16 +88,12 @@ const Checkout = () => {
     
     }
 
-
-
-
-
+// FORMULARIO //
 
     return (
         <div className="formulario">
             <h1>Formulario</h1>
             <h2>complete el siguiente formulario para realizar su orden</h2>
-        
             <input  value={name} onChange={(e) => setName(e.target.value)} type="text"     placeholder="Nombre" />
                 <input value={address}onChange={(e) => setAddress(e.target.value)}type="text"    placeholder="Dirección" />
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"     placeholder="Email" />
