@@ -20,7 +20,9 @@ if ( Cart.length === 0){
     return(
     <div>
     <p>no hay producto en el carrito</p>
-    <Link to ='/'>Hacer compra</Link>
+
+    <button className='ButtonCart'> <Link to ='/'>Hacer compra</Link></button>
+  
    </div>
 
     )
@@ -33,7 +35,9 @@ return (
            
     { Cart.map(products =><ItemCart Key={products.id} product={products}/>) }
          <p>Total a Pagar: ${total}</p>
-         <Link to='/Checkout'>Checkout</Link>
+
+         <button className='ButtonCart'><Link to='/Checkout'>Checkout</Link></button>
+         
 </div>
 
 )

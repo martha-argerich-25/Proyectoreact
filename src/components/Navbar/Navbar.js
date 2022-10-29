@@ -48,32 +48,23 @@ setCategories (categoriesAdapted)
 
   return (
 
-    
-    <Navbar bg="light" expand="lg">
+  
+    <Navbar  bg="light" expand="lg">
+     
       <img src={logo} width="100" alt="flor"/>
+      <button className='ButtoncolorNav'> <Link to = {'/category/faciles'} > Faciles cuidados</Link></button>
+      <button className='ButtoncolorNav'>  <Link to = {'/category/dificiles'}>Dificiles cuidados</Link></button>
+      
+      
+      <Container >
+      
+     
 
-      <Link to = {'/category/faciles'} className="Titlefilter"> Faciles cuidados</Link>
-      <Link to = {'/category/dificiles'}>Dificiles cuidados</Link>
-      <Container>
-        
- <Navbar.Brand >Orquideas</Navbar.Brand>
- <Link to ='/'>HOME</Link>
+ <button className='ButtoncolorNav1'> <Link to ='/'>HOME</Link></button>
+ 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-          <Nav.Link href="#home">Productos</Nav.Link>
-            <Nav.Link href="#link">Ventas</Nav.Link>
-            <NavDropdown title="mas opciones" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">compras</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-               otros productos
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">contactos</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                saludos
-              </NavDropdown.Item>
-            </NavDropdown>
+          <Nav className="color">
           </Nav>
         </Navbar.Collapse>
         <CartWidget/>

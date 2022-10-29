@@ -3,6 +3,7 @@ import Counter from "../counter/counter";
 import{useContext,useState } from 'react';
 import { Link } from "react-router-dom";
 import{useCart}from '../../Context/CartContext'
+import './ItemDetail.css'
 
 
 
@@ -39,7 +40,7 @@ return(
   
     <div className='body'>
     <h2 className='title'>{name}</h2>
-
+<div className="ItemDetail">
      <h2>Precio {price}$</h2>
      <h2>Stock {stock}</h2>
      <p>{description}</p>
@@ -51,10 +52,10 @@ return(
 
   {
 //{stock !== 0 ? <Counter onAdd={handLeOnadd} stock ={stock} initial={3}/> : <p>no hay stock disponible</p>}
-      goToCart ?<Link to='/cart'>finalizar compra</Link>:<Counter onAdd={handLeOnadd}/>
+      goToCart ? <button className="ButtonItemDetail"><Link to='/cart'>Finalizar compra</Link></button>:<Counter onAdd={handLeOnadd}/>
 
   }
-
+</div>
 </div>)
 
 

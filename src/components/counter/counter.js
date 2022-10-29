@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './counter.css'
 
 const  Counter = ({stock=4, initial = 1 ,onAdd})=>{
 
@@ -30,9 +31,13 @@ const  Counter = ({stock=4, initial = 1 ,onAdd})=>{
         <div>
     <h1>contador</h1>
     <h2>{count}</h2>
-    <button onClick={restar}>restar</button>
-  <button onClick={sumar}>sumar</button>
-  <button onClick={()=>onAdd(count)}>agregar al carrito</button>
+    <button  className="ButtonColor" onClick={restar}>restar</button>
+    <span id='span1'></span>
+    <span id='span2'></span>
+    <span id='span3'></span>
+    <span id='span4'></span>
+  <button className="ButtonColor" onClick={sumar}>sumar</button>
+  <button className="ButtonColor"  onClick={()=>onAdd(count)}>Agregar al carrito</button>
         </div>
         
         

@@ -9,7 +9,8 @@ const Item =({id,img ,name, price,stock,category})=>{
 return (
         <div className='box'>
              <h2 className='title'>{name}</h2>
-   <Link to={`/detail/${id}`}>Ver detalle</Link>
+
+   <button className='buttonItem'><Link to={`/detail/${id}`}>Ver detalle</Link></button>
             <h2>Precio {price}$</h2>
             <h2>Stock {stock}</h2>
             <h2>category {category}</h2>

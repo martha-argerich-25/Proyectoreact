@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {useCart} from '../../Context/CartContext'
+import './ItemCart.css'
 
 
 
@@ -14,7 +15,7 @@ return (
       <p>cantidad de producto elegido = {product.quantity}</p>
      
       <p>Subtotal: ${product.quantity * product.price}</p>
-      <button onClick={()=>removeProduct(product.id)}> Eliminar</button>
+      <button  className='ButtonColor1' onClick={()=>removeProduct(product.id)}> Eliminar</button>
 
   </div>
 )

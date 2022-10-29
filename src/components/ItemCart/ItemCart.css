@@ -1,24 +1,17 @@
-.ButtonItemDetail{
+.ButtonColor1 {
 
-
-    background-color: rgba(198, 43, 226, 0.677);
+    background-color: rgb(198, 43, 226);
     padding: 10px 10px;
     letter-spacing: 4px;
     font-size: 20px;
     overflow: hidden;
     transition: 0.2s;
-    background:rgba(177, 43, 226, 0.562);
+    background:blueviolet;
     box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80 #a945c7;
-
+    
 }
-
-.ButtonItemDetail:hover{
+.ButtonColor1:hover {
     background:rgb(189, 43, 226);
     box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80 #a945c7;
     
 }
-.ItemDetail{
-   
-    background-color: rgba(174, 43, 226, 0.473);
-}
-

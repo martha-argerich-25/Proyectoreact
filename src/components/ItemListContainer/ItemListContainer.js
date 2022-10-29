@@ -1,9 +1,8 @@
-
+import './ItemListContainer.css'
 import { useState,useEffect } from "react"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import './ItemListContainer.css'
-import {getDocs,collection } from "firebase/firestore"
+import {getDocs,collection,where,query } from "firebase/firestore"
 import { db } from "../../service/firebase"
 
 
@@ -13,21 +12,35 @@ import { db } from "../../service/firebase"
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([])
-    const [loading] = useState(false)
-    const { category } = useParams()
+    const [loading,setLoading] = useState(true)
+    const { categoryId } = useParams()
+   
+
     
 
     useEffect(() => {
-        //setLoading(true)
+        setLoading(true)
+//FUNCION PARA EL FILTRADO DE CATEGORIAS LLAMADO DE FIREBASE
 
-        //const querydb = getFirestore()
-        const queryCollection = collection(db,'prueba' );
-        getDocs (queryCollection)
-        .then(res =>setProducts  (res.docs.map(product=>({id:product.id,...product.data()}))))
+       const collectionRef = categoryId 
+       ? query(collection(db, 'prueba'), where('category', '==', categoryId))
+       : collection(db, 'prueba')
+   getDocs(collectionRef).then(response => {
+       const productsAdapted = response.docs.map(doc => {
+           const data = doc.data()
+           return { id: doc.id, ...data }
+       })
+       setProducts(productsAdapted)
+
+   }).catch(error => {
+       console.log(error)
+   }).finally(() => {
+       setLoading(false)
+   })  
    
-    }, [])
+    }, [categoryId])
    
-   
+
     if (loading) {
         return (
             <div>
@@ -41,6 +54,7 @@ const ItemListContainer = ({ greeting }) => {
         <div >
          
             <div>
+                <h1>Lista de orquideas</h1>
                 <ItemList products={products} />
             </div>
         </div>

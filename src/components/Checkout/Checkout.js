@@ -4,6 +4,7 @@ import { collection, getDocs, query, where, documentId, writeBatch, addDoc } fro
 import { db } from '../../service/firebase'
 import React from 'react'
 import './Checkout.css'
+import swal from 'sweetalert'
 
 
 
@@ -75,6 +76,7 @@ const Checkout = () => {
 
                
                 console.log('success', `El id de su orden es: ${orderAdded.id}`)
+                swal ('su compra se  realizo correctamente')
             } else {
                 console.log('error','no hay stock disponibles')
             }
@@ -89,6 +91,9 @@ const Checkout = () => {
 
     if(loading) {
         return <h1>Se esta procesando su pedido...</h1>
+
+
+    
     }
 
 
@@ -105,7 +110,7 @@ const Checkout = () => {
                 <input value={address}onChange={(e) => setAddress(e.target.value)}type="text"    placeholder="Dirección" />
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"     placeholder="Email" />
                 <input value={phone}onChange={(e) => setPhone(e.target.value)} type="number"    placeholder="Teléfono" />
-           <button onClick={order}>generar pedido</button>
+           <button  className="ButtonColor2" onClick={order}>Generar pedido</button>
         </div>
     )
 }
