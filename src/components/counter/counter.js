@@ -1,6 +1,8 @@
 import { useState } from "react"
 import './counter.css'
 
+//CONTADOR//
+
 const  Counter = ({stock=4, initial = 1 ,onAdd})=>{
 
 

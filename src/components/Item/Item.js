@@ -1,7 +1,7 @@
 import './Item.css';
 import {Link} from 'react-router-dom'
 
-// esto va a ir dentro de itemlist
+//ITEM
 
 
 const Item =({id,img ,name, price,stock,category})=>{

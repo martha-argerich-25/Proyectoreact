@@ -1,6 +1,6 @@
 
 import Counter from "../counter/counter";
-import{useContext,useState } from 'react';
+import{useState } from 'react';
 import { Link } from "react-router-dom";
 import{useCart}from '../../Context/CartContext'
 import './ItemDetail.css'
@@ -12,15 +12,10 @@ import './ItemDetail.css'
 
 // CARD// componente de visualizacion
 const ItemDetail = ({id,name,price,stock,description,img,category})=>{
-   
-
   
 
   const [goToCart,setGoCart]= useState(false)
   const {addProduct} = useCart();
-
-
-
     const handLeOnadd =(quantity)=>{
 
       setGoCart(true)
@@ -47,11 +42,8 @@ return(
     <p>categoria {category}</p>
     <img src={img} alt={'name'} style={{width:400}}/>
 
-    
-    
-
   {
-//{stock !== 0 ? <Counter onAdd={handLeOnadd} stock ={stock} initial={3}/> : <p>no hay stock disponible</p>}
+
       goToCart ? <button className="ButtonItemDetail"><Link to='/cart'>Finalizar compra</Link></button>:<Counter onAdd={handLeOnadd}/>
 
   }

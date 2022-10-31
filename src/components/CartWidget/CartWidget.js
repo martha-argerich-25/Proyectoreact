@@ -6,10 +6,9 @@ import { useContext } from 'react';
 
 
 
-
+// CARRITO DE COMPRAS//
 
 const CartWidget = ()=>{
-
 const {totalQuantity} = useContext (CartContext)
 
 return(

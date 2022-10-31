@@ -2,16 +2,13 @@ import React  from 'react'
 import {useCart} from '../../Context/CartContext'
 import {Link} from 'react-router-dom'
 import ItemCart from '../ItemCart/Itemcart'
-
 import './Cart.css'
 
 
 
-
+//CART//
 
 const Cart =()=> {
-
-
 const {Cart,total} = useCart();
 
 

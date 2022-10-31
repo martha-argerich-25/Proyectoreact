@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom"
 import { getFirestore,getDoc ,doc} from "firebase/firestore"
 
 
-
+//ITEM DETAIL CONTAINER
 
 const ItemDetailContainer = () => {
   const [products, setProducts] = useState([])

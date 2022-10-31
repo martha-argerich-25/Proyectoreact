@@ -8,15 +8,6 @@ import {CartProvider}from './Context/CartContext'
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
 
-
-
-
-
-
-
-
-
-
 function App() {
   return (
     <div className="App">  
@@ -34,10 +25,6 @@ function App() {
      </BrowserRouter>
     </CartProvider>
  
-  
-        
-        
-  
   </div>
   );
 }

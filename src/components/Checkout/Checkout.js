@@ -15,15 +15,13 @@ import swal from 'sweetalert'
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
     const { Cart, total, clearCart } = useCart();
-
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
 
-    
-
+// FUNCION PARA LA ORDEN Y ACTUALIZACION DE STOCK //
     const order = async () => {
         setLoading(true)
 
@@ -40,15 +38,10 @@ const Checkout = () => {
             }
             
             const batch = writeBatch(db)
-
             const outOfStock = []
-
             const ids = Cart.map(prod => prod.id)
-    
             const productsRef = collection(db, 'prueba')
-    
             const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
-
             const { docs } = productsAddedFromFirestore
 
             docs.forEach(doc => {
@@ -70,9 +63,12 @@ const Checkout = () => {
                 const orderAdded = await addDoc(orderRef, objOrder)
                 clearCart()
                 console.log('success', `El id es : ${orderAdded.id}`)
+
+                // UN ALERT PARA INFORMAR LA COMPRA CORRECTAMENTE
                 swal ('su compra se  realizo correctamente')
             } else {
-                console.log('error','no hay stock disponibles')
+              // UN ALERT PARA INFORMAR QUE NO HAY STOCK
+                swal ('NO HAY STOCK DISPONIBLE')
             }
         } catch (error) {
             console.log(error)
@@ -87,8 +83,35 @@ const Checkout = () => {
 
     
     }
+    
+//VALIDACION DE FORMULARIO
 
-// FORMULARIO //
+const submit =(e)=>{
+
+    e.prevetDefault()
+    
+       if(name.value === null || name.value ===''){
+        
+           swal ('complete los campos')
+           
+       }
+       if(email.value === null || email.value=== '' ){
+           swal ('complete los campos')
+       }
+       if(phone.value=== null || phone.value=== ''){
+           swal ('complete los campos')
+       }
+       if(address.value=== null || address.value=== ''){
+           swal ('complete los campos')
+       }
+   
+   
+   return false;
+  
+   }
+   
+
+// FORMULARIO  CON LOS DATOS QUE SE ENVIAN AL FIREBASE//
 
     return (
         <div className="formulario">
@@ -99,6 +122,8 @@ const Checkout = () => {
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"     placeholder="Email" />
                 <input value={phone}onChange={(e) => setPhone(e.target.value)} type="number"    placeholder="Teléfono" />
            <button  className="ButtonColor2" onClick={order}>Generar pedido</button>
+           <button className="ButtonColor2" onClick={(e) => this.submit(e)}>validar datos</button>
+          
         </div>
     )
 }
