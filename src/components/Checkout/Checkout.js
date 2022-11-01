@@ -88,20 +88,20 @@ const Checkout = () => {
 
 const submit =(e)=>{
 
-    e.prevetDefault()
+    e.preventDefault()
     
-       if(name.value === null || name.value ===''){
+       if(name === null || name ===''){
         
            swal ('complete los campos')
            
        }
-       if(email.value === null || email.value=== '' ){
+       if(email === null || email === '' ){
            swal ('complete los campos')
        }
-       if(phone.value=== null || phone.value=== ''){
+       if(phone === null || phone === ''){
            swal ('complete los campos')
        }
-       if(address.value=== null || address.value=== ''){
+       if(address === null || address === ''){
            swal ('complete los campos')
        }
    
@@ -109,7 +109,6 @@ const submit =(e)=>{
    return false;
   
    }
-   
 
 // FORMULARIO  CON LOS DATOS QUE SE ENVIAN AL FIREBASE//
 
@@ -122,7 +121,7 @@ const submit =(e)=>{
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"     placeholder="Email" />
                 <input value={phone}onChange={(e) => setPhone(e.target.value)} type="number"    placeholder="Teléfono" />
            <button  className="ButtonColor2" onClick={order}>Generar pedido</button>
-           <button className="ButtonColor2" onClick={(e) => this.submit(e)}>validar datos</button>
+           <button className="ButtonColor2" onClick={submit}>validar datos</button>
           
         </div>
     )
