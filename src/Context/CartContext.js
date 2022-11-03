@@ -1,6 +1,6 @@
 import  {useState, useEffect, useContext,createContext} from 'react'
 
-
+// las funciones del cart//
 export const CartContext = createContext({
     Cart: [],
     totalQuantity: 0
@@ -48,12 +48,15 @@ export const CartProvider = ({children} ) => {
 
 const clearCart = () => setCart ( [ ] )
 
+
 const isInCart = (id) => { return Cart.find (product =>product.id ===id) ? true : false }
 
+
+// funcion para remover el producto//
 const removeProduct = (id) => setCart (Cart.filter ( product => product.id !== id))
 
 
-// funcion para el total de precio
+// funcion para el precio total//
 const getTotal = () => {
 	let total = 0
 	Cart.forEach(prod => {

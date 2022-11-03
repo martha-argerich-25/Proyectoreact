@@ -10,6 +10,7 @@ import swal from 'sweetalert'
 
 
 
+
 // FUNCION DE COMPRA Y CONFIRMACION ENVIANDO DATOS A FIREBASE//
 
 const Checkout = () => {
@@ -19,6 +20,7 @@ const Checkout = () => {
     const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [checkEmail,setCheckEmail]= useState("")
 
 
 // FUNCION PARA LA ORDEN Y ACTUALIZACION DE STOCK //
@@ -66,6 +68,7 @@ const Checkout = () => {
 
                 // UN ALERT PARA INFORMAR LA COMPRA CORRECTAMENTE
                 swal ('su compra se  realizo correctamente')
+
             } else {
               // UN ALERT PARA INFORMAR QUE NO HAY STOCK
                 swal ('NO HAY STOCK DISPONIBLE')
@@ -104,7 +107,15 @@ const submit =(e)=>{
        if(address === null || address === ''){
            swal ('complete los campos')
        }
-   
+       //para corroborar el mail
+       else if (email !== checkEmail && email && checkEmail){
+        swal ('compruebe el mail colocado')
+       }
+
+
+   else{
+    swal ('Los datos fueron completados')
+   }
    
    return false;
   
@@ -115,13 +126,14 @@ const submit =(e)=>{
     return (
         <div className="formulario">
             <h1>Formulario</h1>
-            <h2>complete el siguiente formulario para realizar su orden</h2>
+            <h2>Valide sus datos antes de generar la orden</h2>
             <input  value={name} onChange={(e) => setName(e.target.value)} type="text"     placeholder="Nombre" />
                 <input value={address}onChange={(e) => setAddress(e.target.value)}type="text"    placeholder="Dirección" />
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"     placeholder="Email" />
                 <input value={phone}onChange={(e) => setPhone(e.target.value)} type="number"    placeholder="Teléfono" />
            <button  className="ButtonColor2" onClick={order}>Generar pedido</button>
            <button className="ButtonColor2" onClick={submit}>validar datos</button>
+           <input value={checkEmail} onChange={(e) => setCheckEmail(e.target.value)} type="Confirme email"     placeholder="Email" required/>
           
         </div>
     )
