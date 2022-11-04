@@ -4,6 +4,9 @@ ecommerce
 
 https://github.com/martha-argerich-25/Proyectoreact
 
+archivo para ver los videos 
+https://drive.google.com/drive/folders/17EqxNahsJLGSJGpmi43OfOPogpgCtO70
+
 
 
 - se utilizo framework : bootstrap
@@ -18,7 +21,8 @@ la base de datos de firebase se encuentra bajo el nombre de "prueba"
 VERIFICAR CARPETA CON LS 
 npm install
  npm start
- esperar para ul uso de la aplicacion
+ esperar para el  uso de la aplicacion
+
 
 
 
