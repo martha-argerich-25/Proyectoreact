@@ -5,7 +5,7 @@ ecommerce
 https://github.com/martha-argerich-25/Proyectoreact
 
 archivo para ver los videos 
-https://drive.google.com/drive/folders/17EqxNahsJLGSJGpmi43OfOPogpgCtO70
+https://drive.google.com/drive/folders/17EqxNahsJLGSJGpmi43OfOPogpgCtO70?usp=sharing
 
 
 
